@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!--Header Section-->
     <div id="header">
         <div class="container">
+
+            <!--Navigation bar containing logo and link sections-->
             <nav>
                 <img src="images/Logo.png" class="logo">
                 <ul>
@@ -18,9 +22,9 @@
                     <li><a href="#">Hobby</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
-
             </nav>
 
+            <!--Introduction along with hero image-->
             <div class="home">
                 <div class="home-text">
                     <h1>Hello, I'm <span>Krisna Kieng</span></h1>
@@ -33,5 +37,86 @@
             </div>
         </div>
     </div>
+
+    <!--About Me section-->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/portrait.jpeg" alt="portrait">
+                </div>
+
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p class="description">
+                        My name is Krisna Kieng and I recently graduated from CSULB majoring in computer science. I am currently
+                        open to work searching for roles as a software developer or as a support engineer. I live in Long Beach  
+                        and I am open to commuting or working remotely. I am comfortable working individually for my own personal growth 
+                        as well as working with a team to gain insight from my peers. I am eager to learn new skills that I can pair with
+                        my current skillsets to further my development.
+                    </p>
+
+                    <!--Tab Titles-->
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                        <p class="tab-links" onclick="opentab('hobbies')">Hobbies</p>
+                    </div>
+
+                    <!--Skills tab contents-->
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li>Java</li>
+                            <li>Kotlin</li>
+                            <li>Python</li>
+                            <li>C++</li>
+                            <li>SQL</li>
+                            <li>HTML/CSS</li>
+                            <li>Android Studio</li>  
+                        </ul>
+                    </div>
+
+                    <!--Education tab contents-->
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2018 - 2023</span><br>California State University Long Beach</li> 
+                        </ul>
+                    </div>
+
+                    <!--Hobbies tab contents-->
+                    <div class="tab-contents" id="hobbies">
+                        <ul>
+                            <li>Wrench on my Personal Cars</li>
+                            <li>Attend Car Shows</li>
+                            <li>Photography</li>
+                            <li>Play Computer Games</li>
+                            <li>Visit Theme Parks</li>                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        //Variables created upon elements found above
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+
+            //Both for loops used to remove the content from the tabs when another tab is clicked
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+
+
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+    </script>
 </body>
 </html>
