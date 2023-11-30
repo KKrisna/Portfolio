@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -20,22 +25,20 @@
                     <li><a href="#header">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#project">Projects</a></li>
-                    <li><a href="#hobby">Hobby</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
                 </ul>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
 
-            <!--Introduction along with hero image-->
-            <div class="home">
-                <div class="home-text">
-                    <h1>Hello, I'm <span>Krisna Kieng</span></h1>
-                    <p>Software Developer based out of Long Beach, California</p>
+            <div class="home-row">
+                <div class="home-col-1">
+                    <img src="images/hero_photo.png" alt="hero">
                 </div>
-                
-                <div>
-                    <img src="images/hero_photo.png" class="hero" style="float: right">
+
+                <div class="home-col-2">
+                    <h1 class="home-title">Hello, I'm <br> <span>Krisna Kieng</span></h1>
+                    <p class="home-description">Software Developer based out of Long Beach, California</p>
                 </div>
             </div>
         </div>
@@ -45,11 +48,9 @@
     <div id="about">
         <div class="container">
             <div class="row">
+                
+                <!--Description-->
                 <div class="about-col-1">
-                    <img src="images/portrait.jpeg" alt="portrait">
-                </div>
-
-                <div class="about-col-2">
                     <h1 class="sub-title">About Me</h1>
                     <p class="description">
                         My name is Krisna Kieng and I recently graduated from CSULB majoring in computer science. I am currently
@@ -96,6 +97,12 @@
                             <li>Visit Theme Parks</li>                        </ul>
                     </div>
                 </div>
+
+                <!--Portrait photo-->
+                <div class="about-col-2">
+                    <img src="images/portrait.jpeg" alt="portrait">
+                </div>
+
             </div>
         </div>
     </div>
@@ -105,6 +112,8 @@
         <div class="container">
             <h1 class="sub-title">Projects</h1>
             <div class="work-list">
+
+                <!--MealSteal Project Card-->
                 <div class="work">
                     <img src="/images/MealSteal.png" alt="MealSteal">
                     <div class="layer">
@@ -118,6 +127,7 @@
                     </div>
                 </div>
 
+                <!--86 Project Card-->
                 <div class="work">
                     <img src="/images/pyramid2.jpeg" alt="MealSteal">
                     <div class="layer">
@@ -131,6 +141,7 @@
                     </div>
                 </div>
 
+                <!--Temporary Project Card-->
                 <div class="work">
                     <img src="/images/tuner.jpeg" alt="MealSteal">
                     <div class="layer">
@@ -154,18 +165,24 @@
         <div class="container">
             <div class="row">
                 <div class="contact-left">
+
+                    <!--Email and Phone-->
                     <h1 class="sub-title">Contact Me</h1>
                     <p><i class="fa-solid fa-paper-plane"></i>krisnakieng@gmail.com</p>
                     <p><i class="fa-solid fa-square-phone"></i>(562) 900 - 9533</p>
 
+                    <!--Social Icons-->
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/krisna-kieng/"><i class="fa-brands fa-linkedin"></i></a>
                         <a href="https://github.com/KKrisna"><i class="fa-brands fa-square-github"></i></a>
 
                     </div>
+
+                    <!--Resume PDF Download-->
                     <a href="images/Kieng_Resume.pdf" download class="btn btn2">Download Resume</a>
                 </div>
 
+                <!--Message Me section-->
                 <div class="contact-right">
                     <form name="submit-to-google-sheet">
                         <input type="text" name="Name" placeholder="Your Name" required>
@@ -177,6 +194,8 @@
                 </div>
             </div>
         </div>
+
+        <!--Copyright Section at the bottom-->
         <div class="copyright">
             <p>Copyright © Krisna Kieng</p>
         </div>
@@ -222,14 +241,18 @@
 
     <!--Function to send message to google sheets-->
     <script>
+        //Personal Google Forms link
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyVML_WmSdBKq1jxlhYR8kwnHfrwlOmsszLBx-aarSjKYc9IcfvFd1tUMJWvH69C1lneg/exec'
         const form = document.forms['submit-to-google-sheet']
         const msg = document.getElementById("msg")
     
+        //When submit button is clicked to send a message
         form.addEventListener('submit', e => {
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
+
+                //Toast message showing for 5 seconds if message is sent then reset
                 msg.innerHTML = "Message Sent Successfully"
                 setTimeout(function(){
                     msg.innerHTML = ""
