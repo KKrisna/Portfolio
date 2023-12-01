@@ -89,11 +89,12 @@ nav ul li a:hover::after{
     flex-basis: 60%;
 }
 
-.home-title{
+.home-title.anim-down{
     font-size: 80px;
     margin-bottom: 20px;
     color: black;
     font-family: Rampart One, sans-serif;
+    animation-delay: 0.5s;
 }
 
 .home-title span{
@@ -102,11 +103,54 @@ nav ul li a:hover::after{
     font-family: Rampart One, sans-serif;
 }
 
-.home-description{
+.home-description.anim-up{
     margin-top: 10px;
     color: black;
     font-size: 35px;
     font-family: Rampart One, sans-serif;
+    animation-delay: 1s;
+}
+
+.anim-up{
+    opacity: 0;
+    transform: translateY(30px);
+    animation: moveup 0.5s linear forwards;
+}
+
+@keyframes moveup {
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+
+    }
+}
+
+.anim-down{
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: moveDown 0.5s linear forwards;
+}
+
+@keyframes moveDown {
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+
+    }
+}
+
+.anim-right{
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: moveRight 0.5s linear forwards;
+}
+
+@keyframes moveRight {
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+
+    }
 }
 
 
